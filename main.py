@@ -43,8 +43,8 @@ def get_text():
     return input_text
 user_id = get_text()
 
-if user_id:
-    st.write("Hello, "+ user_id + "!")
+#if user_id:
+#st.write("Hello, "+ user_id + "!")
 
 st.markdown('---')
 st.markdown('\n')
@@ -84,7 +84,7 @@ def generate_response(prompt):
     return message
 
 ## text show on screen
-message("Hello RYX!")
+message("Hello Joey!")
 message("Hi~ ChatGPT!", is_user=True)
 
 ## store conversation
