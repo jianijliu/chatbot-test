@@ -43,8 +43,8 @@ def get_text():
     return input_text
 user_id = get_text()
 
-#if user_id:
-#st.write("Hello, "+ user_id + "!")
+if user_id:
+    st.write("Hello, "+ user_id + "!")
 
 st.markdown('---')
 st.markdown('\n')
