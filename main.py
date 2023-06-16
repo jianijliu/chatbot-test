@@ -68,7 +68,7 @@ from streamlit_chat import message
 ## reference: https://github.com/AI-Yash/st-chat
 
 ## authenrization
-openai.api_key = st.secrets["api_secret"]
+# openai.api_key = st.secrets["api_secret"]
 
 ## create chatbot
 def generate_response(prompt):
