@@ -1,8 +1,5 @@
 import streamlit as st
 import pandas as pd
-from langchain import PromptTemplate
-from langchain import OpenAI
-
 
 ## prompt engieering
 template = """
