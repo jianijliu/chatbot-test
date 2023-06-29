@@ -81,14 +81,11 @@ if 'messages' not in st.session_state:
     st.session_state['messages'] = [
         {"role": "system", "content": "You are a helpful assistant."}
     ]
-            
-
 
 if user_id:
     ## text show on screen
     message("Hi! ChatGPT", is_user=True)
     message("Hello! RYX")
-
     # container for chat history
     response_container = st.container()
     # container for text box
@@ -115,6 +112,6 @@ if user_id:
                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
                 message(st.session_state["generated"][i], key=str(i))
 else:
-    st.markdown("**Please type in participant ID first!**")
+    st.markdown("**Please type in your participant ID first!**")
     st.markdown("\n")
 
