@@ -34,6 +34,10 @@ template = """
 #    return llm
 # llm = load_LLM()
 
+headers = {
+    "authorization": st.secrets["API_KEY"], 
+    "content-type": "application/json"
+}
 
 #### part 1. Introduction part
 
