@@ -61,8 +61,8 @@ if 'messages' not in st.session_state:
     ]
             
 ## text show on screen
-message("Hello RYX!")
-message("Hi~ ChatGPT!", is_user=True)
+message("Hi! ChatGPT", is_user=True)
+message("Hello! RYX")
 
 # container for chat history
 response_container = st.container()
