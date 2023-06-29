@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import gspread
 import pandas as pd
-import datetime
+from datetime import datetime
 
 #### part 1. Introduction part
 # instruction message
