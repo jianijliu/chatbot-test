@@ -10,22 +10,22 @@ from streamlit_chat import message
 #### part 1. Introduction part
 
 # introduction message
-st.set_page_config(page_title='ChatBot 1', page_icon=':robot:')
-st.header("🤖️You are chating with ChatGPT")
-st.markdown('Thank you for participating this research!  \n '
-            'You will be asked to have a conversation with ChatGPT to **generate a recipe**. Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. ')
+#st.set_page_config(page_title='ChatBot 1', page_icon=':robot:')
+#st.header("🤖️You are chating with ChatGPT")
+#st.markdown('Thank you for participating this research!  \n '
+#            'You will be asked to have a conversation with ChatGPT to **generate a recipe**. Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. ')
 
-st.markdown('\n')
-st.markdown("**Please paste your participation ID:**")
-def get_text():
-    input_text = st.text_area(label="", placeholder="Participation ID...", key='text1')
-    return input_text
-user_id = get_text()
+#st.markdown('\n')
+#st.markdown("**Please paste your participation ID:**")
+#def get_text():
+#    input_text = st.text_area(label="", placeholder="Participation ID...", key='text1')
+#    return input_text
+#user_id = get_text()
 
-st.markdown('---')
-st.markdown('\n')
-st.markdown('\n')
-st.markdown('\n')
+#st.markdown('---')
+#st.markdown('\n')
+#st.markdown('\n')
+#st.markdown('\n')
 
 
 #### part 2. Chat part
