@@ -1,5 +1,16 @@
 import streamlit as st
-import pandas as pd
+import openai
+from streamlit_chat import message
+#import os
+#import requests
+#import pandas as pd
+#from langchain import PromptTemplate
+#from langchain import OpenAI
+
+## load in to terminal
+# cd /Users/joeyliu/Desktop/ChatGPT/ChatBot
+# ls
+# streamlit run main.py
 
 ## prompt engieering
 template = """
@@ -21,13 +32,10 @@ template = """
 # def load_LLM():
 #    llm = OpenAI(temparature=.5)
 #    return llm
-
 # llm = load_LLM()
 
 
-
 #### part 1. Introduction part
-
 
 # introduction message
 st.set_page_config(page_title='ChatBot 1', page_icon=':robot:')
@@ -43,39 +51,23 @@ def get_text():
     return input_text
 user_id = get_text()
 
-if user_id:
-    st.write("Hello, "+ user_id + "!")
-
 st.markdown('---')
 st.markdown('\n')
 st.markdown('\n')
 st.markdown('\n')
 
 
-
-##################################################################################################
-
-
-
-
-
 #### part 2. Chat part
+# reference: https://github.com/AI-Yash/st-chat
 
-
-import openai
-from streamlit_chat import message
-
-## reference: https://github.com/AI-Yash/st-chat
-
-## authenrization
-openai.api_key = st.secrets["api_secret"]
+# St the GPT-3 api key
 
 ## create chatbot
 def generate_response(prompt):
     completions = openai.Completion.create(
         engine = 'text-davinci-003',
-        prompt = prompt,
-        max_tokens = 4000,
+        # prompt = prompt,
+        max_tokens = 1024,
         n = 1,
         stop = None,
         temparature = 0.5,
@@ -84,7 +76,7 @@ def generate_response(prompt):
     return message
 
 ## text show on screen
-message("Hello Joey!")
+message("Hello RYX!")
 message("Hi~ ChatGPT!", is_user=True)
 
 ## store conversation
@@ -107,28 +99,10 @@ if user_input:
     st.session_state.generated.append(gpt_output)
     # save the record to dataframe
 
-
 if st.session_state['generated']:
     for i in range(len(st.session_state['generated'])-1, -1, -1):
         message(st.session_state["generated"][i], key=str(i))
         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-
-
-
-
-
-## save the conversation
-
-
-#if user_input:
-#    prompt_with_input = prompt.format(user_text=user_input)
-#    gpt_answer = llm(prompt_with_input)
-#    st.write(gpt_answer)
-
-
-#df = pd.DataFrame({'user': [user_input], 'gpt': [gpt_answer]})
-#df.to_csv('/Users/joeyliu/Desktop/ChatGPT/ChatBot/user1.csv', index=False)
-
 
 
 
