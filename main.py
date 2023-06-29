@@ -74,6 +74,7 @@ message("Hi~ ChatGPT!", is_user=True)
 st.markdown("\n")
 st.markdown("**You can ask ChatGPT how to make a pancake:**")
 
+user_input = ''
 if user_input:
     output = generate_response(user_input)
     st.session_state.past.append(user_input)
