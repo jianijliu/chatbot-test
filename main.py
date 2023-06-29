@@ -85,3 +85,23 @@ if st.session_state['generated']:
             message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
             message(st.session_state["generated"][i], key=str(i))
 
+# Connect to Google Sheets
+# reference: https://docs.streamlit.io/knowledge-base/tutorials/databases/private-gsheet
+# Create a connection object.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=[
+        "https://www.googleapis.com/auth/spreadsheets",
+    ],
+)
+conn = connect(credentials=credentials)
+client = gspread.authorize(credentials)
+
+# Write in Google Sheets
+# First, Reading from Google Sheets
+sheet_url = st.secrets["private_gsheets_url"]
+df_database = pd.read_csv(sheet_url, on_bad_lines='skip')
+sheet = client.open_by_url(sheet_url).sheet1  # select a worksheet
+# Second, insert a new row
+row = [user_id, user_input, output]
+sheet.insert_row(row)
