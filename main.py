@@ -59,6 +59,29 @@ st.markdown('\n')
 # St the GPT-3 api key
 openai.api_key = st.secrets["API_KEY"]
 
+def generate_response(prompt):
+    completions = openai.Completion.create (
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    message = completions.choices[0].text
+    return message
+
+st.title("AI Assistant : openAI + Streamlit")
+
+prompt = st.text_input("Enter your message:", key='prompt')
+if st.button("Submit", key='submit'):
+  response = generate_response(prompt)
+  st.success(response)
+
+
+
+
 ## create chatbot
 def generate_response(prompt):
     completions = openai.Completion.create(
