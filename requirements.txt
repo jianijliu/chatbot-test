@@ -2,5 +2,5 @@ openai
 streamlit-chat
 gsheetsdb
 pandas
-google
+oauth2client
 gspread
