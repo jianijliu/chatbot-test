@@ -5,6 +5,7 @@ from google.oauth2 import service_account
 from gsheetsdb import connect
 import gspread
 import pandas as pd
+import datetime
 
 #### part 1. Introduction part
 # instruction message
@@ -101,7 +102,8 @@ with container:
         st.session_state['past'].append(user_input)
         st.session_state['generated'].append(output)
         # insert a new row
-        row = [user_id, user_input, output]
+        now = datetime.now()
+        row = [user_id, now, user_input, output]
         sheet.insert_row(row)
         
 if st.session_state['generated']:
