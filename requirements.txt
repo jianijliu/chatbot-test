@@ -1,4 +1,6 @@
-langchain
 openai
 streamlit-chat
 gsheetsdb
+pandas
+google
+gspread
