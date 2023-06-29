@@ -41,7 +41,6 @@ openai.api_key = st.secrets["API_KEY"]
 # generate a response
 def generate_response(prompt):
     st.session_state['messages'].append({"role": "user", "content": prompt})
-
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=st.session_state['messages']
@@ -50,7 +49,7 @@ def generate_response(prompt):
     st.session_state['messages'].append({"role": "assistant", "content": response})
     # print(st.session_state['messages'])
     return response
-
+    
 # Initialise session state variables
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
@@ -76,11 +75,11 @@ container = st.container()
 
 with container:
     with st.form(key='my_form', clear_on_submit=True):
-        user_input = st.text_area("You:", key='input', height=100)
+        user_input = st.text_area("You can ask ChatGPT how to make a pancake:", key='input', height=100)
         submit_button = st.form_submit_button(label='Send')
 
     if submit_button and user_input:
-        output, total_tokens, prompt_tokens, completion_tokens = generate_response(user_input)
+        output = generate_response(user_input)
         st.session_state['past'].append(user_input)
         st.session_state['generated'].append(output)
 
