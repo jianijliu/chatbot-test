@@ -26,9 +26,7 @@ template = """
     YOUR RESPONSE: 
 """
 
-# prompt = PromptTemplate(
-#    input_variables = [user_text], template = template, )
-
+#prompt = PromptTemplate(    input_variables = [user_text], template = template,)
 # def load_LLM():
 #    llm = OpenAI(temparature=.5)
 #    return llm
@@ -65,7 +63,7 @@ openai.api_key = st.secrets["API_KEY"]
 def generate_response(prompt):
     completions = openai.Completion.create(
         engine = 'text-davinci-003',
-        # prompt = prompt,
+        prompt = prompt,
         max_tokens = 1024,
         n = 1,
         stop = None,
