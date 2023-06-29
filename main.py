@@ -1,6 +1,10 @@
 import streamlit as st
 import openai
 from streamlit_chat import message
+from google.oauth2 import service_account
+from gsheetsdb import connect
+import gspread
+import pandas as pd
 
 #### part 1. Introduction part
 # instruction message
