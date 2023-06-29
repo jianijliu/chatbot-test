@@ -98,12 +98,12 @@ with container:
         submit_button = st.form_submit_button(label='Send')
 
     if submit_button and user_input:
-        input_time = datetime.now()
+        input_time = str(datetime.now())
         output = generate_response(user_input)
         st.session_state['past'].append(user_input)
         st.session_state['generated'].append(output)
         # insert a new row
-        output_time = datetime.now()
+        output_time = str(datetime.now())
         row = [user_id, input_time, user_input, output_time, output]
         sheet.insert_row(row)
         
