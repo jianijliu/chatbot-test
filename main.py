@@ -82,17 +82,18 @@ if 'messages' not in st.session_state:
         {"role": "system", "content": "You are a helpful assistant."}
     ]
             
-# container for chat history
-response_container = st.container()
-# container for text box
-container = st.container()
 
 
 if user_id:
     ## text show on screen
     message("Hi! ChatGPT", is_user=True)
     message("Hello! RYX")
-    
+
+    # container for chat history
+    response_container = st.container()
+    # container for text box
+    container = st.container()
+
     with container:
         with st.form(key='my_form', clear_on_submit=True):
             user_input = st.text_area("You can ask ChatGPT how to make a pancake:", key='input', height=100)
