@@ -22,7 +22,6 @@ def get_text():
     return input_text
 user_id = get_text()
 
-
 #### part 2. Chat part
 # reference: https://github.com/AI-Yash/st-chat
 
@@ -92,25 +91,28 @@ response_container = st.container()
 # container for text box
 container = st.container()
 
-with container:
-    with st.form(key='my_form', clear_on_submit=True):
-        user_input = st.text_area("You can ask ChatGPT how to make a pancake:", key='input', height=100)
-        submit_button = st.form_submit_button(label='Send')
 
-    if submit_button and user_input:
-        input_time = str(datetime.now())
-        output = generate_response(user_input)
-        st.session_state['past'].append(user_input)
-        st.session_state['generated'].append(output)
-        # insert a new row
-        output_time = str(datetime.now())
-        row = [user_id, input_time, user_input, output_time, output]
-        sheet.insert_row(row)
+if user_id: 
+    with container:
+        with st.form(key='my_form', clear_on_submit=True):
+            user_input = st.text_area("You can ask ChatGPT how to make a pancake:", key='input', height=100)
+            submit_button = st.form_submit_button(label='Send')
+
+        if submit_button and user_input:
+            input_time = str(datetime.now())
+            output = generate_response(user_input)
+            st.session_state['past'].append(user_input)
+            st.session_state['generated'].append(output)
+            # insert a new row
+            output_time = str(datetime.now())
+            row = [user_id, input_time, user_input, output_time, output]
+            sheet.insert_row(row)
         
-if st.session_state['generated']:
-    with response_container:
-        for i in range(len(st.session_state['generated'])):
-            message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
-            message(st.session_state["generated"][i], key=str(i))
-
+    if st.session_state['generated']:
+        with response_container:
+            for i in range(len(st.session_state['generated'])):
+                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
+                message(st.session_state["generated"][i], key=str(i))
+else:
+    st.write("Type in Participant ID first! ")
 
