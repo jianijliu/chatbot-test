@@ -34,11 +34,6 @@ template = """
 #    return llm
 # llm = load_LLM()
 
-headers = {
-    "authorization": st.secrets["API_KEY"], 
-    "content-type": "application/json"
-}
-
 #### part 1. Introduction part
 
 # introduction message
@@ -46,7 +41,6 @@ st.set_page_config(page_title='ChatBot 1', page_icon=':robot:')
 st.header("🤖️You are chating with ChatGPT")
 st.markdown('Thank you for participating this research!  \n '
             'You will be asked to have a conversation with ChatGPT to **generate a recipe**. Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. ')
-
 
 st.markdown('\n')
 st.markdown("**Please paste your participation ID:**")
@@ -65,6 +59,7 @@ st.markdown('\n')
 # reference: https://github.com/AI-Yash/st-chat
 
 # St the GPT-3 api key
+openai.api_key = st.secrets["API_KEY"]
 
 ## create chatbot
 def generate_response(prompt):
