@@ -40,7 +40,7 @@ openai.api_key = st.secrets["API_KEY"]
 
 # generate a response
 def generate_response(prompt):
-    st.session_state['messages'].append({"role": "user", "content": prompt})
+    # st.session_state['messages'].append({"role": "user", "content": prompt})
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=st.session_state['messages']
