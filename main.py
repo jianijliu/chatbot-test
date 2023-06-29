@@ -38,18 +38,20 @@ template = """
 # St the GPT-3 api key
 openai.api_key = st.secrets["API_KEY"]
 
+# generate a response
 def generate_response(prompt):
-    completions = openai.Completion.create (
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
-    message = completions.choices[0].text
-    return message
+    st.session_state['messages'].append({"role": "user", "content": prompt})
 
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=st.session_state['messages']
+    )
+    response = completion.choices[0].message.content
+    st.session_state['messages'].append({"role": "assistant", "content": response})
+    # print(st.session_state['messages'])
+    return response
+
+# Initialise session state variables
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
 if 'past' not in st.session_state:
@@ -66,20 +68,25 @@ message("Hi~ ChatGPT!", is_user=True)
 ## get text
 st.markdown("\n")
 st.markdown("**You can ask ChatGPT how to make a pancake:**")
-def get_text():
-    input_text = st.text_input("You: ","", key="input")
-    return input_text 
-user_input = get_text()
 
-## show response
-if user_input:
-    output = generate_response(user_input)
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(output)
+# container for chat history
+response_container = st.container()
+# container for text box
+container = st.container()
+
+with container:
+    with st.form(key='my_form', clear_on_submit=True):
+        user_input = st.text_area("You:", key='input', height=100)
+        submit_button = st.form_submit_button(label='Send')
+
+    if submit_button and user_input:
+        output, total_tokens, prompt_tokens, completion_tokens = generate_response(user_input)
+        st.session_state['past'].append(user_input)
+        st.session_state['generated'].append(output)
 
 if st.session_state['generated']:
-    for i in range(len(st.session_state['generated'])-1, -1, -1):
-        message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-        message(st.session_state["generated"][i], key=str(i))
-        
+    with response_container:
+        for i in range(len(st.session_state['generated'])):
+            message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
+            message(st.session_state["generated"][i], key=str(i))
 
