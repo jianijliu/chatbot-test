@@ -73,8 +73,9 @@ message("Hi~ ChatGPT!", is_user=True)
 ## get text
 st.markdown("\n")
 st.markdown("**You can ask ChatGPT how to make a pancake:**")
+
 def get_text():
-    input_text = st.text_input("You:","", key="input")
+    input_text = st.text_input("You: ", "", key="input")
     return input_text 
 
 user_input = get_text()
