@@ -1,36 +1,11 @@
 import streamlit as st
 import openai
 from streamlit_chat import message
-#import os
-#import requests
-#import pandas as pd
-#from langchain import PromptTemplate
-#from langchain import OpenAI
 
 ## load in to terminal
 # cd /Users/joeyliu/Desktop/ChatGPT/ChatBot
 # ls
 # streamlit run main.py
-
-## prompt engieering
-template = """
-    Below is a question that target creating a recipe.
-    Your goal is to: 
-    - Ask her preference
-    - Ask the occasion of this meal
-    - Create a specific meal for this occasion according to her preference
-    
-    Below is the question.
-    QUESTION: {user_text} 
-    
-    YOUR RESPONSE: 
-"""
-
-#prompt = PromptTemplate(    input_variables = [user_text], template = template,)
-# def load_LLM():
-#    llm = OpenAI(temparature=.5)
-#    return llm
-# llm = load_LLM()
 
 #### part 1. Introduction part
 
@@ -56,9 +31,22 @@ st.markdown('\n')
 #### part 2. Chat part
 # reference: https://github.com/AI-Yash/st-chat
 
+## prompt engieering
+template = """
+    Below is a question that target creating a recipe.
+    Your goal is to: 
+    - Ask her preference
+    - Ask the occasion of this meal
+    - Create a specific meal for this occasion according to her preference
+    
+    Below is the question.
+    QUESTION: {user_text} 
+    
+    YOUR RESPONSE: 
+"""
+
 # St the GPT-3 api key
 openai.api_key = st.secrets["API_KEY"]
-
 
 # -----------------------------------
 def generate_response(prompt):
@@ -70,25 +58,22 @@ def generate_response(prompt):
         stop=None,
         temperature=0.5,
     )
-
     message = completions.choices[0].text
     return message
 
-
-st.title("🤖 chatBot : openAI GPT-3 + Streamlit")
-
-
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
-
 if 'past' not in st.session_state:
     st.session_state['past'] = []
 
+## text show on screen
+message("Hello RYX!")
+message("Hi~ ChatGPT!", is_user=True)
 
+## get text
 def get_text():
-    input_text = st.text_input("You: ","Hello, how are you?", key="input")
+    input_text = st.text_input("You: ","Type here to ask ChatGPT...", key="input")
     return input_text 
-
 
 user_input = get_text()
 
@@ -98,59 +83,9 @@ if user_input:
     st.session_state.generated.append(output)
 
 if st.session_state['generated']:
-
     for i in range(len(st.session_state['generated'])-1, -1, -1):
         message(st.session_state["generated"][i], key=str(i))
         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-
-
-
-# -----------------------------------
-
-## create chatbot
-def generate_response(prompt):
-    completions = openai.Completion.create(
-        engine = 'text-davinci-003',
-        prompt = prompt,
-        max_tokens = 1024,
-        n = 1,
-        stop = None,
-        temparature = 0.5,
-    )
-    message = completions.choices[0].text
-    return message
-
-## text show on screen
-message("Hello RYX!")
-message("Hi~ ChatGPT!", is_user=True)
-
-## store conversation
-if 'generated' not in st.session_state:
-    st.session_state['generated'] = []
-if 'past' not in st.session_state:
-    st.session_state['past'] = []
-
-## user type in:
-def get_text():
-    input_text = st.text_area(label="", placeholder="Type here to ask ChatGPT...", key='chat')
-    return input_text
-user_input = get_text()
-
-## GPT generates response
-if user_input:
-    gpt_output = generate_response(user_input)
-    # store the output
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(gpt_output)
-    # save the record to dataframe
-
-if st.session_state['generated']:
-    for i in range(len(st.session_state['generated'])-1, -1, -1):
-        message(st.session_state["generated"][i], key=str(i))
-        message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
-
-
-
 
 
 
