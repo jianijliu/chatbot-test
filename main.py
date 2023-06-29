@@ -6,6 +6,7 @@ from gsheetsdb import connect
 import gspread
 import pandas as pd
 from datetime import datetime
+import numpy as np
 
 #### part 1. Introduction part
 # instruction message
@@ -102,7 +103,7 @@ with container:
         st.session_state['past'].append(user_input)
         st.session_state['generated'].append(output)
         # insert a new row
-        now = datetime.now()
+        now = np.str(datetime.now())
         row = [user_id, now, user_input, output]
         sheet.insert_row(row)
         
