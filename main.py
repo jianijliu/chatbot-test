@@ -64,10 +64,6 @@ if 'messages' not in st.session_state:
 message("Hello RYX!")
 message("Hi~ ChatGPT!", is_user=True)
 
-## get text
-st.markdown("\n")
-st.markdown("**You can ask ChatGPT how to make a pancake:**")
-
 # container for chat history
 response_container = st.container()
 # container for text box
