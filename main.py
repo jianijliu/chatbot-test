@@ -74,12 +74,6 @@ message("Hi~ ChatGPT!", is_user=True)
 st.markdown("\n")
 st.markdown("**You can ask ChatGPT how to make a pancake:**")
 
-def get_text():
-    input_text = st.text_input("You: ", "", key="input")
-    return input_text 
-
-user_input = get_text()
-
 if user_input:
     output = generate_response(user_input)
     st.session_state.past.append(user_input)
@@ -90,6 +84,11 @@ if st.session_state['generated']:
         message(st.session_state["generated"][i], key=str(i))
         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
+def get_text():
+    input_text = st.text_input("You: ", "", key="input")
+    return input_text 
+
+user_input = get_text()
 
 
 
