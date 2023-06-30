@@ -118,63 +118,6 @@ if user_id:
         row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
 
-    
-    ## text show on screen
-    #message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="YR")
-    #message("Hello! RYX", avatar_style="flower1")
-    
-    # container for chat history
-    #response_container = st.container()
-    # container for text box
-    #container = st.container()
-
-    #placeholder = st.empty()
-    #with container:
-    #    with st.form(key='my_form', clear_on_submit=True):
-    #        user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
-    #        submit_button = st.form_submit_button(label='Send')
-
-    #    if submit_button and user_input:
-    #        input_time = str(datetime.now())
-    #        output = generate_response(user_input)
-    #        st.session_state['past'].append(user_input)
-    #        st.session_state['generated'].append(output)
-    #        # insert a new row
-    #        output_time = str(datetime.now())
-    #        ip_address = socket.gethostbyname(socket.gethostname())
-    #        row = [user_id, input_time, user_input, output_time, output]
-    #        sheet.insert_row(row)
-        
-    #if st.session_state['generated']:
-    #    with response_container:
-    #        for i in range(len(st.session_state['generated'])):
-    #            message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="initials", seed="YR")
-    #            message(st.session_state["generated"][i], key=str(I))
-
-    # container for chat history
-    #response_container = st.container()
-    # container for text box
-    #container = st.container()
-    
-    #with container:
-    #    # interacton
-    #    user_input = st.chat_input("Ask ChatGPT")
-    #    if user_input:
-    #        input_time = str(datetime.now())
-    #        output = generate_response(user_input)
-    #        st.session_state['past'].append(user_input)
-    #        st.session_state['generated'].append(output)
-            
-    #if st.session_state['generated']:
-    #    with response_container:
-    #        for i in range(len(st.session_state['generated'])):
-    #            user_msg = st.chat_message("user")
-    #            user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
-    #            gen_msg = st.chat_message("assistant")
-    #            gen_msg.write(st.session_state["generated"][i], key=str(i))
-    #    output_time = str(datetime.now())
-    #    row = [user_id, input_time, user_input, output_time, output]
-    #   sheet.insert_row(row)
-
 else:
-    st.subheader("Please read instructions in the sidebar carefully and type in your participant ID first!")
+    st.markdown("\n")
+    st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
