@@ -22,7 +22,7 @@ st.sidebar.info(
     \n Please paste down your participation ID first: 
     '''
 )
-user_id = st.chat_input("Participation ID...")
+user_id = st.sidebar.text_input("Participation ID...")
 #def get_text():
     #input_text = st.sidebar.chat_input("Participation ID...")
     #input_text = st.sidebar.text_area(label="", placeholder="Participation ID...", key='text1')
