@@ -136,9 +136,13 @@ else:
         # interacton
         user_input = st.chat_input("Ask ChatGPT")
         if user_input:
+            input_time = str(datetime.now())
             output = generate_response(user_input)
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
+            output_time = str(datetime.now())
+            row = [user_id, input_time, user_input, output_time, output]
+            sheet.insert_row(row)
             
     if st.session_state['generated']:
         with response_container:
