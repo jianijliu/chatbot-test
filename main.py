@@ -137,8 +137,8 @@ else:
         user_input = st.chat_input("Ask ChatGPT")
         if user_input:
             output = generate_response(user_input)
-            st.session_state['generated'].append(output)
             st.session_state['past'].append(user_input)
+            st.session_state['generated'].append(output)
             
     if st.session_state['generated']:
         with response_container:
