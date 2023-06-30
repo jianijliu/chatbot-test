@@ -89,6 +89,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+image_url = "https://api.dicebear.com/6.x/icons/svg?icon=flower1"
 if user_id:
     # Accept user input
     if prompt := st.chat_input("Send a message"):
@@ -99,7 +100,8 @@ if user_id:
         with st.chat_message("user"):
             st.markdown(prompt)
         # Display assistant response in chat message container
-        with st.chat_message("assistant"):
+        
+        with st.chat_message("assistant", avatar=image_url):
             message_placeholder = st.empty()
             full_response = ""
             for response in openai.ChatCompletion.create(
