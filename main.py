@@ -87,7 +87,7 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     role = message["role"]
-    if role := 'assistant':
+    if role == "assistant":
         with st.chat_message(role):
             st.markdown(message["content"])
     else:
