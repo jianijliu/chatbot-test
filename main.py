@@ -89,7 +89,7 @@ if 'messages' not in st.session_state:
 
 if user_id:
     ## text show on screen
-    message("Hi! ChatGPT", is_user=True)
+    message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="Felix")
     message("Hello! RYX")
     
     # container for chat history
