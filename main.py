@@ -88,7 +88,7 @@ if 'messages' not in st.session_state:
     ]
 
 
-message("Hello! RYX", avatar_style="icons", seed="flower")
+message("Hello! RYX", avatar_style="icons", seed="flower2")
 
 
 
