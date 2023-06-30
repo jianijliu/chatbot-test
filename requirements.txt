@@ -5,4 +5,3 @@ pandas
 oauth2client
 gspread
 datetime
-socket
