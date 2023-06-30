@@ -128,9 +128,9 @@ else:
     # container for text box
     container = st.container()
     with container:
-        with st.form(key='my_form', clear_on_submit=True):
-            user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
-            submit_button = st.form_submit_button(label='Send')
+        # with st.form(key='my_form', clear_on_submit=True):
+            # user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
+            # submit_button = st.form_submit_button(label='Send')
 
         # interacton
         user_input = st.chat_input("Ask ChatGPT")
