@@ -122,13 +122,29 @@ if user_id:
 else:
     st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
     st.markdown("\n")
-    user_input = st.chat_input("Ask ChatGPT")
-    if user_input:
-        user_msg = st.chat_message("user")
-        user_msg.write(" " + user_input)
-        
-        output = generate_response(user_input)
-        gen_msg = st.chat_message("assistant")
-        gen_msg.write(" " + output)
-        
+
+    # container for chat history
+    response_container = st.container()
+    # container for text box
+    container = st.container()
+    with container:
+        with st.form(key='my_form', clear_on_submit=True):
+            user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
+            submit_button = st.form_submit_button(label='Send')
+
+        # interacton
+        user_input = st.chat_input("Ask ChatGPT")
+        if user_input:
+            output = generate_response(user_input)
+            st.session_state['past'].append(user_input)
+            st.session_state['generated'].append(output)
+              
+    if st.session_state['generated']:
+        with response_container:
+            for i in range(len(st.session_state['generated'])):
+                user_msg = st.chat_message("user")
+                user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
+                gen_msg = st.chat_message("assistant")
+                gen_msg.write(st.session_state["generated"][i], key=str(i))
+    
 
