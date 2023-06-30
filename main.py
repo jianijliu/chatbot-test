@@ -124,6 +124,6 @@ else:
     st.markdown("\n")
     prompt = st.chat_input("Ask ChatGPT")
     if prompt:
-        st.chat_message("user")
-        st.write(prompt)
+        message = st.chat_message("user")
+        message.write(prompt)
 
