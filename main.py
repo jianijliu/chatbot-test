@@ -59,13 +59,11 @@ credentials = service_account.Credentials.from_service_account_info(
 conn = connect(credentials=credentials)
 client = gspread.authorize(credentials)
 
-# Write in Google Sheets
-# First, Reading from Google Sheets
+# Read Google Sheets
 sheet_url = st.secrets["private_gsheets_url"]
-# df_database = pd.read_csv(sheet_url, on_bad_lines='skip')
 sheet = client.open_by_url(sheet_url).sheet1  # select a worksheet
 
-# generate a response
+# Generate a response
 def generate_response(prompt):
     st.session_state['messages'].append({"role": "user", "content": prompt})
     completion = openai.ChatCompletion.create(
@@ -77,79 +75,104 @@ def generate_response(prompt):
     # print(st.session_state['messages'])
     return response
     
-# Initialise session state variables
-if 'generated' not in st.session_state:
-    st.session_state['generated'] = []
-if 'past' not in st.session_state:
-    st.session_state['past'] = []
-if 'messages' not in st.session_state:
-    st.session_state['messages'] = [
-        {"role": "system", "content": "You are a helpful assistant."}
-    ]
-
+# Set a default model
+if "openai_model" not in st.session_state:
+    st.session_state["openai_model"] = "gpt-3.5-turbo"
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
 if user_id:
-    ## text show on screen
-    message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="YR")
-    message("Hello! RYX", avatar_style="flower1")
-    
-    # container for chat history
-    response_container = st.container()
-    # container for text box
-    container = st.container()
-
-    placeholder = st.empty()
-    with container:
-        with st.form(key='my_form', clear_on_submit=True):
-            user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
-            submit_button = st.form_submit_button(label='Send')
-
-        if submit_button and user_input:
-            input_time = str(datetime.now())
-            output = generate_response(user_input)
-            st.session_state['past'].append(user_input)
-            st.session_state['generated'].append(output)
-            # insert a new row
-            output_time = str(datetime.now())
-            ip_address = socket.gethostbyname(socket.gethostname())
-            row = [user_id, input_time, user_input, output_time, output]
-            sheet.insert_row(row)
-        
-    if st.session_state['generated']:
-        with response_container:
-            for i in range(len(st.session_state['generated'])):
-                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="initials", seed="YR")
-                message(st.session_state["generated"][i], key=str(i))
-else:
-    st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
-    st.markdown("\n")
-
-    # container for chat history
-    response_container = st.container()
-    # container for text box
-    container = st.container()
-    with container:
-        # with st.form(key='my_form', clear_on_submit=True):
-            # user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
-            # submit_button = st.form_submit_button(label='Send')
-
-        # interacton
-        user_input = st.chat_input("Ask ChatGPT")
-        if user_input:
-            input_time = str(datetime.now())
-            output = generate_response(user_input)
-            st.session_state['past'].append(user_input)
-            st.session_state['generated'].append(output)
-            
-    if st.session_state['generated']:
-        with response_container:
-            for i in range(len(st.session_state['generated'])):
-                user_msg = st.chat_message("user")
-                user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
-                gen_msg = st.chat_message("assistant")
-                gen_msg.write(st.session_state["generated"][i], key=str(i))
+    # Accept user input
+    if prompt := st.chat_input("What is up?"):
+        input_time = str(datetime.now())
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        # Display user message in chat message container
+        with st.chat_message("user"):
+            st.markdown(prompt)
+        # Display assistant response in chat message container
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            full_response = ""
+            for response in openai.ChatCompletion.create(
+                model=st.session_state["openai_model"],
+                messages=[
+                    {"role": m["role"], "content": m["content"]}
+                    for m in st.session_state.messages
+                ],
+                stream=True,
+            ):
+                full_response += response.choices[0].delta.get("content", "")
+                message_placeholder.markdown(full_response + "▌")
+            message_placeholder.markdown(full_response)
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
         output_time = str(datetime.now())
         row = [user_id, input_time, user_input, output_time, output]
         sheet.insert_row(row)
-    
 
+    
+    ## text show on screen
+    #message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="YR")
+    #message("Hello! RYX", avatar_style="flower1")
+    
+    # container for chat history
+    #response_container = st.container()
+    # container for text box
+    #container = st.container()
+
+    #placeholder = st.empty()
+    #with container:
+    #    with st.form(key='my_form', clear_on_submit=True):
+    #        user_input = st.text_area("Ask ChatGPT:", key='input') # , height=20
+    #        submit_button = st.form_submit_button(label='Send')
+
+    #    if submit_button and user_input:
+    #        input_time = str(datetime.now())
+    #        output = generate_response(user_input)
+    #        st.session_state['past'].append(user_input)
+    #        st.session_state['generated'].append(output)
+    #        # insert a new row
+    #        output_time = str(datetime.now())
+    #        ip_address = socket.gethostbyname(socket.gethostname())
+    #        row = [user_id, input_time, user_input, output_time, output]
+    #        sheet.insert_row(row)
+        
+    #if st.session_state['generated']:
+    #    with response_container:
+    #        for i in range(len(st.session_state['generated'])):
+    #            message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="initials", seed="YR")
+    #            message(st.session_state["generated"][i], key=str(I))
+
+    # container for chat history
+    #response_container = st.container()
+    # container for text box
+    #container = st.container()
+    
+    #with container:
+    #    # interacton
+    #    user_input = st.chat_input("Ask ChatGPT")
+    #    if user_input:
+    #        input_time = str(datetime.now())
+    #        output = generate_response(user_input)
+    #        st.session_state['past'].append(user_input)
+    #        st.session_state['generated'].append(output)
+            
+    #if st.session_state['generated']:
+    #    with response_container:
+    #        for i in range(len(st.session_state['generated'])):
+    #            user_msg = st.chat_message("user")
+    #            user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
+    #            gen_msg = st.chat_message("assistant")
+    #            gen_msg.write(st.session_state["generated"][i], key=str(i))
+    #    output_time = str(datetime.now())
+    #    row = [user_id, input_time, user_input, output_time, output]
+    #   sheet.insert_row(row)
+
+else:
+    st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
+    st.markdown("\n")
