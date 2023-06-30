@@ -86,8 +86,13 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+    role = message["role"]
+    if role := 'assistant':
+        with st.chat_message(role):
+            st.markdown(message["content"])
+    else:
+        with st.chat_message(role, avatar=image_url):
+            st.markdown(message["content"])
 
 image_url = "https://api.dicebear.com/6.x/icons/svg?icon=flower1"
 if user_id:
