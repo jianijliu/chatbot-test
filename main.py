@@ -30,7 +30,7 @@ user_id = get_text()  # ask for participation id
 #### part 2. Chat part
 # reference: https://github.com/AI-Yash/st-chat
 
-message("Hello! RYX", avatar_style="icons", scale=50)
+message("Hello! RYX", avatar_style="icons")
 
 
 ## prompt engieering
