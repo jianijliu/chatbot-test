@@ -101,7 +101,7 @@ if user_id:
             st.markdown(prompt)
         # Display assistant response in chat message container
         
-        with st.chat_message("assistant"):
+        with st.chat_message("assistant", avatar=image_url):
             message_placeholder = st.empty()
             full_response = ""
             for response in openai.ChatCompletion.create(
