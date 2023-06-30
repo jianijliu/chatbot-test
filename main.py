@@ -177,5 +177,6 @@ if user_id:
     #   sheet.insert_row(row)
 
 else:
+    st.markdown("\n")
     st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
     st.markdown("\n")
