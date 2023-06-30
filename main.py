@@ -6,6 +6,7 @@ from gsheetsdb import connect
 import gspread
 import pandas as pd
 from datetime import datetime
+import socket
 
 #### part 1. Introduction part
 # instruction message
@@ -103,7 +104,8 @@ if user_id:
             st.session_state['generated'].append(output)
             # insert a new row
             output_time = str(datetime.now())
-            row = [user_id, input_time, user_input, output_time, output]
+            ip_address = socket.gethostbyname(socket.gethostname())
+            row = [user_id, ip_address, input_time, user_input, output_time, output]
             sheet.insert_row(row)
         
     if st.session_state['generated']:
