@@ -24,6 +24,7 @@ st.sidebar.info(
 )
 def get_text():
     input_text = st.sidebar.text_area(label="", placeholder="Participation ID...", key='text1')
+    submit_button = st.sidebar.form_submit_buttom(label="submit")
     return input_text
 user_id = get_text()  # ask for participation id
 
