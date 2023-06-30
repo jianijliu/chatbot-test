@@ -136,16 +136,24 @@ else:
         # interacton
         user_input = st.chat_input("Ask ChatGPT")
         if user_input:
-            output = generate_response(user_input)
             st.session_state['past'].append(user_input)
+            with response_container:
+                for i in range(len(st.session_state['generated'])):
+                    user_msg = st.chat_message("user")
+                    user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
+                    gen_msg = st.chat_message("assistant")
+                    gen_msg.write(st.session_state["generated"][i], key=str(i))
+            output = generate_response(user_input)
             st.session_state['generated'].append(output)
-              
-    if st.session_state['past']:
-        with response_container:
-            for i in range(len(st.session_state['generated'])):
-                user_msg = st.chat_message("user")
-                user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
-                gen_msg = st.chat_message("assistant")
-                gen_msg.write(st.session_state["generated"][i], key=str(i))
+            gen_msg = st.chat_message("assistant")
+            gen_msg.write(st.session_state["generated"][i], key=str(i))
+    
+    #if st.session_state['generated']:
+    #    with response_container:
+    #        for i in range(len(st.session_state['generated'])):
+    #            user_msg = st.chat_message("user")
+    #            user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
+    #            gen_msg = st.chat_message("assistant")
+    #            gen_msg.write(st.session_state["generated"][i], key=str(i))
     
 
