@@ -87,12 +87,8 @@ if 'messages' not in st.session_state:
         {"role": "system", "content": "You are a helpful assistant."}
     ]
 
-gpt_avatar = 'https://api.dicebear.com/6.x/icons/svg?seed=Dusty&radius=10'
 
-
-message("Hello! RYX", avatar_style=f"""
-<img src="https://api.dicebear.com/6.x/icons/svg?seed=Dusty&radius=10" >
-""")
+message("Hello! RYX", avatar_style="icons", seed="flower1")
 
 
 
