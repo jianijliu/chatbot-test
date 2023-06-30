@@ -91,6 +91,7 @@ if user_id:
     ## text show on screen
     message("Hi! ChatGPT", is_user=True)
     message("Hello! RYX")
+    st.markdown("\n")
     # container for chat history
     response_container = st.container()
     # container for text box
