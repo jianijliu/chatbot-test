@@ -85,6 +85,7 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 # Display chat messages from history on app rerun
+image_url = "https://api.dicebear.com/6.x/icons/svg?icon=flower1"
 for message in st.session_state.messages:
     role = message["role"]
     content = message["content"]
@@ -95,7 +96,6 @@ for message in st.session_state.messages:
         with st.chat_message(role, avatar=image_url):
             st.markdown(content)
 
-image_url = "https://api.dicebear.com/6.x/icons/svg?icon=flower1"
 if user_id:
     # Accept user input
     if prompt := st.chat_input("Send a message"):
