@@ -117,7 +117,7 @@ if user_id:
     if st.session_state['generated']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
-                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="identicon", seed = 616)
+                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="initials")
                 message(st.session_state["generated"][i], key=str(i))
 else:
     st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
