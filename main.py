@@ -86,11 +86,11 @@ if 'messages' not in st.session_state:
     st.session_state['messages'] = [
         {"role": "system", "content": "You are a helpful assistant."}
     ]
-
+message("Hello! RYX", avatar_style="flower1")
 if user_id:
     ## text show on screen
     message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="YR")
-    message("Hello! RYX", avatar_style="icons/flower1")
+    message("Hello! RYX", avatar_style="flower1")
     
     # container for chat history
     response_container = st.container()
