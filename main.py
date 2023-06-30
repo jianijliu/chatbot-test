@@ -30,9 +30,6 @@ user_id = get_text()  # ask for participation id
 #### part 2. Chat part
 # reference: https://github.com/AI-Yash/st-chat
 
-message("Hello! RYX", avatar_style="icons")
-
-
 ## prompt engieering
 template = """
     Below is a question that target creating a recipe.
@@ -91,10 +88,6 @@ if 'messages' not in st.session_state:
     ]
 
 
-message("Hello! RYX", avatar_style="icons", seed="leo")
-
-
-
 if user_id:
     ## text show on screen
     message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="YR")
@@ -147,7 +140,7 @@ else:
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
               
-    if st.session_state['generated']:
+    if st.session_state['past']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
                 user_msg = st.chat_message("user")
