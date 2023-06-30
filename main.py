@@ -140,9 +140,6 @@ else:
             output = generate_response(user_input)
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
-            output_time = str(datetime.now())
-            row = [user_id, input_time, user_input, output_time, output]
-            sheet.insert_row(row)
             
     if st.session_state['generated']:
         with response_container:
@@ -151,5 +148,8 @@ else:
                 user_msg.write(st.session_state["past"][i], key=str(i) + '_user')
                 gen_msg = st.chat_message("assistant")
                 gen_msg.write(st.session_state["generated"][i], key=str(i))
+                output_time = str(datetime.now())
+                row = [user_id, input_time, user_input, output_time, output]
+                sheet.insert_row(row)
     
 
