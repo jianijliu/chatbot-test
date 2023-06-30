@@ -8,31 +8,24 @@ import pandas as pd
 from datetime import datetime
 import socket
 
+
 #### part 0. main page setting
 st.set_page_config(page_title='ChatBot-Jiani', page_icon=':robot:')
 st.header("🤖️You are chatting with ChatGPT")
 
+
 #### part 1. Instruction (sidebar)
 st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
-st.sidebar.info(
-    '''
+st.sidebar.info('''
     You will be asked to have a conversation with ChatGPT to **generate a recipe**. \n
     Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. 
     \n Please paste down your participation ID and press Enter to submit: 
-    '''
-)
-user_id = st.sidebar.text_input("Participation ID...")
-#def get_text():
-    #input_text = st.sidebar.chat_input("Participation ID...")
-    #input_text = st.sidebar.text_area(label="", placeholder="Participation ID...", key='text1')
-    #submit_button = st.sidebar.form_submit_buttom(label="submit")
-#    return input_text
-#user_id = get_text()  # ask for participation id
+    ''')
+user_id = st.sidebar.text_input("Participation ID...")   # ask for participation id
+
 
 #### part 2. Chat part
-# reference: https://github.com/AI-Yash/st-chat
-
 ## prompt engieering
 template = """
     Below is a question that target creating a recipe.
@@ -50,37 +43,23 @@ template = """
 # Set the GPT-3 api key
 openai.api_key = st.secrets["API_KEY"]
 
-# Connect to Google Sheets
-# reference: https://docs.streamlit.io/knowledge-base/tutorials/databases/private-gsheet
+# Connect to Google Sheets (reference: https://docs.streamlit.io/knowledge-base/tutorials/databases/private-gsheet)
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets",
-    ],
+    scopes=["https://www.googleapis.com/auth/spreadsheets",],
 )
 conn = connect(credentials=credentials)
 client = gspread.authorize(credentials)
 
 # Read Google Sheets
 sheet_url = st.secrets["private_gsheets_url"]
-sheet = client.open_by_url(sheet_url).sheet1  # select a worksheet
-
-# Generate a response
-def generate_response(prompt):
-    st.session_state['messages'].append({"role": "user", "content": prompt})
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=st.session_state['messages']
-    )
-    response = completion.choices[0].message.content
-    st.session_state['messages'].append({"role": "assistant", "content": response})
-    # print(st.session_state['messages'])
-    return response
+sheet = client.open_by_url(sheet_url).sheet1   # select a worksheet
     
 # Set a default model
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
+    
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -89,13 +68,12 @@ if "messages" not in st.session_state:
 image_url = "https://api.dicebear.com/6.x/icons/svg?icon=flower1"
 for message in st.session_state.messages:
     role = message["role"]
-    content = message["content"]
-    if role := "assistant":
+    if role not in ["assistant"]:
         with st.chat_message("user"):
-            st.markdown(content)
+            st.markdown(message["content"])
     else:
         with st.chat_message("assistant", avatar=image_url):
-            st.markdown(content)
+            st.markdown(message["content"])
 
 if user_id:
     # Accept user input
