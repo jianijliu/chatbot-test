@@ -106,7 +106,7 @@ if user_id:
             output_time = str(datetime.now())
             ip_address = socket.gethostbyname(socket.gethostname())
             row = [user_id, ip_address, input_time, user_input, output_time, output]
-            sheet.insert_row(row, -1)
+            sheet.insert_row(row)
         
     if st.session_state['generated']:
         with response_container:
