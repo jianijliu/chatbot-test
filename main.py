@@ -22,12 +22,13 @@ st.sidebar.info(
     \n Please paste down your participation ID first: 
     '''
 )
-def get_text():
-    input_text = st.sidebar.chat_input("Participation ID...")
+user_id = st.sidebar.chat_input("Participation ID...")
+#def get_text():
+    #input_text = st.sidebar.chat_input("Participation ID...")
     #input_text = st.sidebar.text_area(label="", placeholder="Participation ID...", key='text1')
     #submit_button = st.sidebar.form_submit_buttom(label="submit")
-    return input_text
-user_id = get_text()  # ask for participation id
+#    return input_text
+#user_id = get_text()  # ask for participation id
 
 #### part 2. Chat part
 # reference: https://github.com/AI-Yash/st-chat
