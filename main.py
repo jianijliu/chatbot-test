@@ -122,4 +122,8 @@ if user_id:
 else:
     st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
     st.markdown("\n")
+    prompt = st.chat_input("Ask ChatGPT")
+    if prompt:
+        st.chat_message("user")
+        st.write(prompt)
 
