@@ -89,7 +89,13 @@ if 'messages' not in st.session_state:
 
 gpt_avatar = 'https://api.dicebear.com/6.x/icons/svg?seed=Dusty&radius=10'
 
-message("Hello! RYX", avatar_style=gpt_avatar)
+
+message("Hello! RYX", avatar_style=f"""
+<img src="https://api.dicebear.com/6.x/icons/svg?seed=Dusty&radius=10" >
+""")
+
+
+
 if user_id:
     ## text show on screen
     message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="YR")
