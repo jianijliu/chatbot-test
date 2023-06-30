@@ -112,7 +112,7 @@ if user_id:
             message_placeholder.markdown(full_response)
         st.session_state.messages.append({"role": "assistant", "content": full_response})
         output_time = str(datetime.now())
-        row = [user_id, input_time, user_input, output_time, output]
+        row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
 
     
