@@ -8,6 +8,9 @@ import pandas as pd
 from datetime import datetime
 import socket
 
+message("Hello! RYX", avatar_style="icons", seed="leo")
+
+
 #### part 0. main page setting
 st.set_page_config(page_title='ChatBot-Jiani', page_icon=':robot:')
 st.header("🤖️You are chatting with ChatGPT")
