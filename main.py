@@ -17,7 +17,7 @@ st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info(
     '''
-    You will be asked to have a conversation with ChatGPT to **generate a recipe**.
+    You will be asked to have a conversation with ChatGPT to **generate a recipe**. \n
     Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. 
     \n Please paste down your participation ID first: 
     '''
@@ -118,6 +118,6 @@ if user_id:
                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
                 message(st.session_state["generated"][i], key=str(i))
 else:
-    st.markdown("**Please type in your participant ID first!**")
+    st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
     st.markdown("\n")
 
