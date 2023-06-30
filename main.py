@@ -8,20 +8,24 @@ import pandas as pd
 from datetime import datetime
 import socket
 
-#### part 1. Introduction part
-# instruction message
+#### part 0. main page setting
 st.set_page_config(page_title='ChatBot-Jiani', page_icon=':robot:')
-st.header("🤖️You are chating with ChatGPT")
-st.markdown('You will be asked to have a conversation with ChatGPT to **generate a recipe**. Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. ')
-st.markdown('\n')
-st.sidebar.title("Thank you for participating this research!")
+st.header("🤖️You are chatting with ChatGPT")
+
+#### part 1. Instruction (sidebar)
+st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
-# ask for participation id
-counter_placeholder.markdown("**Please paste your participation ID:**")
+st.sidebar.info(
+    '''
+    You will be asked to have a conversation with ChatGPT to **generate a recipe**.
+    Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. 
+    \n Please paste down your participation ID first: 
+    '''
+)
 def get_text():
     input_text = st.sidebar.text_area(label="", placeholder="Participation ID...", key='text1')
     return input_text
-user_id = get_text()
+user_id = get_text()  # ask for participation id
 
 #### part 2. Chat part
 # reference: https://github.com/AI-Yash/st-chat
