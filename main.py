@@ -84,16 +84,17 @@ if "openai_model" not in st.session_state:
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
 # Display chat messages from history on app rerun
 image_url = "https://api.dicebear.com/6.x/icons/svg?icon=flower1"
 for message in st.session_state.messages:
     role = message["role"]
     content = message["content"]
     if role := "assistant":
-        with st.chat_message(role):
+        with st.chat_message("user"):
             st.markdown(content)
     else:
-        with st.chat_message(role, avatar=image_url):
+        with st.chat_message("assistant", avatar=image_url):
             st.markdown(content)
 
 if user_id:
@@ -121,7 +122,7 @@ if user_id:
                 full_response += response.choices[0].delta.get("content", "")
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
-        st.session_state.messages.append({"role": "assistant", "content": full_response, "avatar": image_url})
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
         output_time = str(datetime.now())
         row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
