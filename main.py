@@ -89,7 +89,7 @@ if 'messages' not in st.session_state:
 
 if user_id:
     ## text show on screen
-    message("Hi! ChatGPT", is_user=True, avatar_style="initials", seed="Felix", radius=10)
+    message("Hi! ChatGPT", is_user=True, avatar_style="initials", radius=10)
     message("Hello! RYX")
     
     # container for chat history
@@ -117,7 +117,7 @@ if user_id:
     if st.session_state['generated']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
-                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="initials", seed="Felix", radius=10)
+                message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="initials", radius=10)
                 message(st.session_state["generated"][i], key=str(i))
 else:
     st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
