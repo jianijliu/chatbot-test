@@ -10,8 +10,8 @@ import socket
 
 
 #### part 0. main page setting
-st.set_page_config(page_title='ChatBot-Jiani', page_icon=':robot:')
-st.header("🤖️You are chatting with ChatGPT")
+st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
+st.header("You are chatting with ChatGPT")
 
 
 #### part 1. Instruction (sidebar)
