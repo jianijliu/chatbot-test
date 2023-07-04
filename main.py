@@ -9,6 +9,10 @@ from datetime import datetime
 import socket
 
 
+#### Test. Present HTML
+html_string = "<h3>this is an html string</h3>"
+st.markdown(html_string, unsafe_allow_html=True)
+
 #### part 0. main page setting
 st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
 st.header("You are chatting with ChatGPT")
