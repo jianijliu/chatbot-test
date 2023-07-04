@@ -10,12 +10,12 @@ import socket
 
 
 #### Test. Present HTML
-html_string = "<h3>this is an html string</h3>"
+html_string = "https://serpapi.com/search.html?engine=google&q=Coffee&google_domain=google.com&gl=us&hl=en&api_key=d9731d1cedeef52dc7fd7dd52bcbfab701803085151e383ec91fb59eda4ec80c"
 st.markdown(html_string, unsafe_allow_html=True)
 
 #### part 0. main page setting
-#st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
-#st.header("You are chatting with ChatGPT")
+st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
+st.header("You are chatting with ChatGPT")
 
 
 #### part 1. Instruction (sidebar)
