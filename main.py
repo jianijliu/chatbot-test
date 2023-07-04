@@ -149,12 +149,10 @@ var pj=function(a,b,c){_.Ld.log(46,{att:a,max:b,url:c})},rj=function(a,b,c){_.Ld
 
 # st.markdown(html_string, unsafe_allow_html=True)
 
-#### part 0. main page setting
-st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
-st.header("You are chatting with ChatGPT")
 
 
-#### part 1. Instruction (sidebar)
+
+#### part 0. Instruction (sidebar)
 st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
@@ -163,6 +161,13 @@ st.sidebar.info('''
     \n Please paste down your participation ID and press Enter to submit: 
     ''')
 user_id = st.sidebar.text_input("Participation ID...")   # ask for participation id
+
+
+
+#### part 1. main page setting
+st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
+st.header("You are chatting with ChatGPT")
+
 
 
 #### part 2. Chat part
