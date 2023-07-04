@@ -147,7 +147,7 @@ var pj=function(a,b,c){_.Ld.log(46,{att:a,max:b,url:c})},rj=function(a,b,c){_.Ld
 """
 )
 
-st.markdown(html_string, unsafe_allow_html=True)
+# st.markdown(html_string, unsafe_allow_html=True)
 
 #### part 0. main page setting
 st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
