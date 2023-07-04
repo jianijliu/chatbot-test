@@ -3,7 +3,7 @@ import openai
 from streamlit_chat import message
 from google.oauth2 import service_account
 from gsheetsdb import connect
-import spread
+# import spread
 import streamlit.components.v1 as components
 import pandas as pd
 from datetime import datetime
