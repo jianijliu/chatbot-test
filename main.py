@@ -3,15 +3,15 @@ import openai
 from streamlit_chat import message
 from google.oauth2 import service_account
 from gsheetsdb import connect
-import streamlit.components.v1 as components
+import gspread
 import pandas as pd
 from datetime import datetime
 import socket
 
 
 #### part 0. main page setting
-st.set_page_config(page_title='ChatBot-Jiani', page_icon=':robot:')
-st.header("You are chating with ChatGPT")
+st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
+st.header("You are chatting with ChatGPT")
 
 
 #### part 1. Instruction (sidebar)
