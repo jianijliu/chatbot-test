@@ -10,7 +10,6 @@ from datetime import datetime
 import socket
 
 
-#### Test. Present HTML (reference: https://github.com/serpapi/google-search-results-python)
 
 #### part 0. Instruction (sidebar)
 st.sidebar.title("Instruction")
