@@ -85,7 +85,8 @@ for message in st.session_state.messages:
 
 if user_id:
     # Accept user input
-    if prompt := st.chat_input("Send a message"):
+    # if prompt := st.chat_input("Send a message"):
+    if prompt := st.text_input(label=" ", placeholder="ask Lumina.AI"): 
         input_time = str(datetime.now())
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
