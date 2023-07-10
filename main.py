@@ -8,17 +8,18 @@ import pandas as pd
 from datetime import datetime
 import socket
 
+#### Demo: https://chatbot-test-jiani.streamlit.app/
 
 #### part 0. main page setting
 st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
-st.header("You are chatting with ChatGPT")
+st.header("You are chatting with Lumina.AI")
 
 
 #### part 1. Instruction (sidebar)
 st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to have a conversation with ChatGPT to **generate a recipe**. \n
+    You will be asked to have a conversation with Lumina.AI to **generate a recipe**. \n
     Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. 
     \n Please paste down your participation ID and press Enter to submit: 
     ''')
