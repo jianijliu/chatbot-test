@@ -1,4 +1,4 @@
-import streamlit as st
+ import streamlit as st
 import openai
 from streamlit_chat import message
 from google.oauth2 import service_account
@@ -12,7 +12,7 @@ import socket
 
 #### part 0. main page setting
 st.set_page_config(page_title='Lumina.AI', page_icon=':robot:')
-st.image(image='lumina.png')
+st.image(image='lumina.png', height=500)
 
 
 #### part 1. Instruction (sidebar)
