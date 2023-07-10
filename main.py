@@ -115,4 +115,5 @@ if user_id:
 
 else:
     st.markdown("\n")
+    st.markdown("<h4 style='text-align: center;'>Please read instructions in the sidebar carefully and type in your participant ID first!</h4>", unsafe_allow_html=True)
     st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
