@@ -24,7 +24,8 @@ st.sidebar.info('''
     \n Please paste down your participation ID and press Enter to submit: 
     ''')
 user_id = st.sidebar.text_input("Participation ID...")   # ask for participation id
-
+with st.spinner('Wait for it...'):
+    time.sleep(5)
 
 #### part 2. Chat part
 ## prompt engieering
@@ -77,8 +78,6 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if user_id:
-    with st.spinner('Wait for it...'):
-        time.sleep(2)
     # Accept user input
     if prompt := st.chat_input("Send a message"):
         input_time = str(datetime.now())
