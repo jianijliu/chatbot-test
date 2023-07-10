@@ -13,7 +13,7 @@ import socket
 #### part 0. main page setting
 st.set_page_config(page_title='Lumina.AI', page_icon=':robot:')
 st.image(image='lumina.png')
-st.write("Please paste down your participation ID in the sidebar!")
+
 
 #### part 1. Instruction (sidebar)
 st.sidebar.title("Instruction")
