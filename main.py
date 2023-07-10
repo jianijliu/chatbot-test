@@ -19,13 +19,12 @@ st.markdown('\n')
 st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to have a conversation with Lumina.AI to **generate a recipe**. \n
+    You will be asked to have a conversation with the generative AI, Lumina, to **generate a recipe**. \n
     Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. 
     \n Please paste down your participation ID and press Enter to submit: 
     ''')
 user_id = st.sidebar.text_input("Participation ID...")   # ask for participation id
-with st.spinner('Wait for it...'):
-    time.sleep(5)
+
 
 #### part 2. Chat part
 ## prompt engieering
