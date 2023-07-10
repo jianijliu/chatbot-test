@@ -11,8 +11,12 @@ import socket
 #### Demo: https://chatbot-test-jiani.streamlit.app/
 
 #### part 0. main page setting
-st.set_page_config(page_title='Chatbot-Jiani', page_icon=':robot:')
-st.header("You are chatting with Lumina.AI")
+st.set_page_config(page_title='Lumina.AI', page_icon=':robot:')
+col1, col2 = st.columns([1.5, 3])
+with col1:
+    st.image(image='lumina.png', width=150)
+with col2:
+    st.header("You are chatting with Lumina.AI")
 
 
 #### part 1. Instruction (sidebar)
