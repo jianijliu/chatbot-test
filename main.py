@@ -19,7 +19,7 @@ with col2:
     st.image("lumina.png", width=500)
 with col3:
     st.write("")
-st.image(image='lumina.png', width=500)
+# st.image(image='lumina.png', width=500)
 st.markdown('\n')
 
 #### part 1. Instruction (sidebar)
