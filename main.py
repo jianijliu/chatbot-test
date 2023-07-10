@@ -77,6 +77,8 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 if user_id:
+    with st.spinner('Wait for it...'):
+        time.sleep(2)
     # Accept user input
     if prompt := st.chat_input("Send a message"):
         input_time = str(datetime.now())
