@@ -115,5 +115,5 @@ if user_id:
 
 else:
     st.markdown("\n")
-    st.markdown("<h6 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your participant ID first!</h6>", unsafe_allow_html=True)
+    st.markdown("<h5 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your participant ID first!</h5>", unsafe_allow_html=True)
     # st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
