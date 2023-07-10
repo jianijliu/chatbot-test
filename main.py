@@ -13,7 +13,7 @@ import socket
 #### part 0. main page setting
 st.set_page_config(page_title='Lumina.AI', page_icon=':robot:')
 st.image(image='lumina.png', width=500)
-
+st.markdown('\n')
 
 #### part 1. Instruction (sidebar)
 st.sidebar.title("Instruction")
