@@ -28,7 +28,7 @@ counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
     You will be asked to complete **three tasks** with Lumina. AI. \n 
     Please ensure that you do not close the Qualtrics and Lumina.AI pages while completing your tasks. \n
-    You can paste down your Prolific ID and press Enter to submit and initiate this service: \n 
+    You can paste down your Prolific ID and press Enter to initiate this service: \n 
     ''')
 user_id = st.sidebar.text_input("Prolific ID...")   # ask for participation id
 
