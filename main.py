@@ -26,9 +26,10 @@ st.markdown('\n')
 st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to complete **three tasks** with Lumina. AI. \n
+    You will be asked to complete **three tasks** with Lumina. AI. \n 
+    Please ensure that you do not close the Qualtrics and Lumina.AI pages while completing your tasks. \n
     Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. \n 
-    Please paste down your Prolific ID and press Enter to submit and initiate this service: 
+    You can paste down your Prolific ID and press Enter to submit and initiate this service: \n 
     ''')
 user_id = st.sidebar.text_input("Prolific ID...")   # ask for participation id
 
