@@ -26,11 +26,11 @@ st.markdown('\n')
 st.sidebar.title("Instruction")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to have a conversation with the generative AI, Lumina, to **generate a recipe**. \n
+    You will be asked to complete **three tasks** with Lumina. AI. \n
     Following the chat, you’ll be redirected back to the survey to answer a few final questions and receive your payment code. \n 
-    Please paste down your participation ID and press Enter to submit: 
+    Please paste down your Prolific ID and press Enter to submit and initiate this service: 
     ''')
-user_id = st.sidebar.text_input("Participation ID...")   # ask for participation id
+user_id = st.sidebar.text_input("Prolific ID...")   # ask for participation id
 
 
 #### part 2. Chat part
@@ -115,5 +115,5 @@ if user_id:
 
 else:
     st.markdown("\n")
-    st.markdown("<h5 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your participant ID first!</h5>", unsafe_allow_html=True)
+    st.markdown("<h5 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your Prolific ID to initiate this service!</h5>", unsafe_allow_html=True)
     # st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
