@@ -11,12 +11,12 @@ import socket
 #### Demo: https://chatbot-test-jiani.streamlit.app/
 
 #### part 0. main page setting
-st.set_page_config(page_title='Lumina.AI', page_icon=':robot:')
+st.set_page_config(page_title='Optima', page_icon=':robot:')
 col1, col2, col3 = st.columns([1,6,1])
 with col1:
     st.write("")
 with col2:
-    st.image("lumina.png", width=500)
+    st.image("logo-optima.png", width=500)   # lumina.png
 with col3:
     st.write("")
 # st.image(image='lumina.png', width=500)
@@ -26,8 +26,8 @@ st.markdown('\n')
 st.sidebar.title("Instructions")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to complete **one task** with Lumina. AI. \n 
-    Please ensure that you **do not close the Qualtrics and Lumina. AI pages** while completing the task. \n
+    You will be asked to complete **one task** with the Optima platform. \n 
+    Please ensure that you **do not close the Qualtrics and the Optima platform pages** while completing the task. \n
     You can type in your Prolific ID and press Enter to initiate this service: \n 
     ''')
 user_id = st.sidebar.text_input("Prolific ID...")   # ask for participation id
