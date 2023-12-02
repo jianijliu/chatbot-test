@@ -27,10 +27,10 @@ st.sidebar.title("任务须知")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
     您需要在Optima平台上完成**一个搜索任务**，在开始之前，请认真阅读以下内容: \n
-    1. 在完成任务的过程中请不要关闭Credamo的页面; \n
+    1. 在完成任务的过程中请**不要关闭Credamo的页面**; \n
     2. 使用自己的**实验编号**登陆Optima平台，请确保填写正确，否则可能影响实验报酬的发放; \n
     3. 在完成任务期间**仅使用Optima平台**，请勿使用任何其他设备或工具辅助完成; \n
-    4. 请避免依靠您自己的知识来完成任务，应该充分利用Optima平台上搜索到的结果完成任务。\n
+    4. 请避免依靠您自己的知识来完成任务，应该充分**利用Optima平台**上搜索到的结果完成任务。\n
     ''')
 #You will be asked to complete **one task** with the Optima platform. \n 
 #Please ensure that you **do not close the Qualtrics and the Optima platform pages** while completing the task. \n
