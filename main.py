@@ -23,14 +23,18 @@ with col3:
 st.markdown('\n')
 
 #### part 1. Instruction (sidebar)
-st.sidebar.title("Instructions")
+st.sidebar.title("任务须知")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to complete **one task** with the Optima platform. \n 
-    Please ensure that you **do not close the Qualtrics and the Optima platform pages** while completing the task. \n
-    You can type in your Prolific ID and press Enter to initiate this service: \n 
+    您需要在Optima平台上完成**一个搜索任务**，在开始之前，请注意以下三个要求: \n
+    1. 确保您使用的是台式电脑，并用自己的**实验编号**登陆Optima平台; \n
+    2. 确保在完成任务期间仅使用Optima平台，请勿使用任何其他设备或工具辅助完成; \n
+    3. 请避免依靠您自己的知识来完成任务，应该充分利用Optima平台上搜索到的结果完成任务。\n
     ''')
-user_id = st.sidebar.text_input("Prolific ID...")   # ask for participation id
+#You will be asked to complete **one task** with the Optima platform. \n 
+#Please ensure that you **do not close the Qualtrics and the Optima platform pages** while completing the task. \n
+#You can type in your Prolific ID and press Enter to initiate this service: \n 
+user_id = st.sidebar.text_input("实验编号...")   # Prolific ID
 
 
 #### part 2. Chat part
@@ -115,5 +119,6 @@ if user_id:
 
 else:
     st.markdown("\n")
-    st.markdown("<h2 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your Prolific ID to initiate this service!</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>感谢您参与本次实验! 请先仔细阅读侧边栏中的任务须知，\n 并输入自己的实验编号以开启实验! </h2>", unsafe_allow_html=True)
+    # st.markdown("<h2 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your Prolific ID to initiate this service!</h2>", unsafe_allow_html=True)
     # st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
