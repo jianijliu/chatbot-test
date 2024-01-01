@@ -23,7 +23,8 @@ with col3:
 st.markdown('\n')
 
 #### part 1. Instruction (sidebar)
-st.sidebar.title("任务须知")
+# st.sidebar.title("任务须知")
+st.sidebar.title("Instructions")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
     You will be asked to complete **one task** with the Optima platform. \n 
