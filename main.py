@@ -27,7 +27,7 @@ st.markdown('\n')
 st.sidebar.title("Instructions")
 counter_placeholder = st.sidebar.empty()
 st.sidebar.info('''
-    You will be asked to complete **one task** with the Optima platform. \n 
+    You will be asked to complete **one task** with the Optima platform. Details of the task can be found on the Qualtrics page. \n 
     Please ensure that you **do not close the Qualtrics and the Optima platform pages** while completing the task. \n
     You can type in your Prolific ID and press Enter to initiate this service: \n 
     ''')
