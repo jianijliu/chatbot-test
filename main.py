@@ -83,7 +83,8 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Display chat messages from history on app rerun
-image_url = "https://api.dicebear.com/6.x/icons/svg?seed=Mimi&icon=flower1&scale=85&"  #  Rocky
+# image_url = "https://api.dicebear.com/6.x/icons/svg?seed=Mimi&icon=flower1&scale=85&"  #  Rocky
+image_url = "https://api.dicebear.com/7.x/micah/svg?seed=Boo&baseColor=f9c9b6&hairColor=000000,77311d,ffffff,transparent,e0ddff,d2eff3,f4d150,9287ff&shirtColor=f9c9b6&backgroundColor=ffdfbf" 
 for message in st.session_state.messages:
     role = message["role"]
     if role not in ["assistant"]:
