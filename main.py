@@ -83,8 +83,8 @@ if "messages" not in st.session_state:
 
 # Display chat messages from history on app rerun
 # image_url = "https://api.dicebear.com/6.x/icons/svg?seed=Mimi&icon=flower1&scale=85&"  #  Rocky
-# image_url = "https://api.dicebear.com/7.x/micah/svg?seed=Mimi&baseColor=f9c9b6&glasses=round&hairColor=6bd9e9&mouth=smile&backgroundColor=b6e3f4,transparent&scale=110" 
-image_url = "https://www.google.com.hk/search?sca_esv=047f670930a35b4a&hl=zh-CN&sxsrf=ACQVn09CGxvmZUpnNno_Hvtj0bqbZglyaw:1708255496466&q=%E5%AE%A2%E6%9C%8D%E5%A4%B4%E5%83%8F&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiqqLXQ47SEAxUwdfUHHRSqDgMQ0pQJegQIDBAB&biw=1629&bih=920&dpr=2.2#imgrc=f7KaYsrR67nFuM"
+# image_url = "https://api.dicebear.com/7.x/micah/svg?seed=Mimi&baseColor=f9c9b6&glasses=round&hairColor=6bd9e9&mouth=smile&backgroundColor=b6e3f4,transparent&scale=110"
+image_url = "https://m.jj20.com/tx/nusheng/199283.html"
 for message in st.session_state.messages:
     role = message["role"]
     if role not in ["assistant"]:
