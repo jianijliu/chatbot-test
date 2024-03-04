@@ -102,7 +102,7 @@ for message in st.session_state.messages:
 # st.session_state["disabled"] = False
 if user_id:
     # Accept user input
-    st.session_state["disabled"] = False
+    # st.session_state["disabled"] = False
     if prompt := st.chat_input(placeholder="ask Optima", disabled=st.session_state.disabled):
         input_time = str(datetime.now())
         # Add user message to chat history
