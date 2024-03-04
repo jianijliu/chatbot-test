@@ -99,6 +99,7 @@ for message in st.session_state.messages:
         with st.chat_message("assistant", avatar=image_url):
             st.markdown(message["content"])
 
+st.session_state["disabled"] = False
 if user_id:
     # Accept user input
     if prompt := st.chat_input(placeholder="ask Optima", disabled=st.session_state.disabled):
