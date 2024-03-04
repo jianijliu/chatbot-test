@@ -96,7 +96,7 @@ for message in st.session_state.messages:
 
 if user_id:
     # Accept user input
-    if prompt := st.chat_input(placeholder="ask Optima", disabled=True):
+    if prompt := st.chat_input(placeholder="ask Optima"):
         input_time = str(datetime.now())
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -122,6 +122,7 @@ if user_id:
         output_time = str(datetime.now())
         row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
+        st.chat_input(placeholder="ask Optima", disable=True)
 
 else:
     st.markdown("\n")
