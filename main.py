@@ -8,6 +8,11 @@ import pandas as pd
 from datetime import datetime
 import socket
 
+if "disabled" not in st.session_state:
+    st.session_state["disabled"] = False
+def disable():
+    st.session_state["disabled"] = True
+    
 #### Demo: https://chatbot-test-jiani.streamlit.app/
 
 #### part 0. main page setting
@@ -39,7 +44,7 @@ st.sidebar.info('''
 #3. 在完成任务期间**仅使用Optima平台**，请勿使用任何其他设备或工具辅助完成; \n
 #4. 请避免依靠您自己的知识来完成任务，应该充分**利用Optima平台**上搜索到的结果完成任务。\n
 
-user_id = st.sidebar.text_input("Prolific ID...") 
+user_id = st.sidebar.text_input("Prolific ID...", disabled=st.session_state.disabled, on_change=disable) 
 # user_id = st.sidebar.text_input("在此填写实验编号...")
 
 #### part 2. Chat part
@@ -94,15 +99,9 @@ for message in st.session_state.messages:
         with st.chat_message("assistant", avatar=image_url):
             st.markdown(message["content"])
 
-if "disabled" not in st.session_state:
-    st.session_state["disabled"] = False
-
-def disable():
-    st.session_state["disabled"] = True
-
 if user_id:
     # Accept user input
-    if prompt := st.chat_input(placeholder="ask Optima", disabled=st.session_state.disabled, on_change=disable):
+    if prompt := st.chat_input(placeholder="ask Optima"):
         input_time = str(datetime.now())
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
