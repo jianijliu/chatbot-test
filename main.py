@@ -101,7 +101,7 @@ for message in st.session_state.messages:
 
 if user_id:
     # Accept user input
-    if prompt := st.chat_input(placeholder="ask Optima", disabled=st.session_state.disabled, on_change=disable):
+    if prompt := st.chat_input(placeholder="ask Optima", disabled=st.session_state.disabled, on_submit=disable):
         input_time = str(datetime.now())
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
