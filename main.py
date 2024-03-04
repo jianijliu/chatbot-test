@@ -94,9 +94,15 @@ for message in st.session_state.messages:
         with st.chat_message("assistant", avatar=image_url):
             st.markdown(message["content"])
 
+if "disabled" not in st.session_state:
+    st.session_state["disabled"] = False
+
+def disable():
+    st.session_state["disabled"] = True
+
 if user_id:
     # Accept user input
-    if prompt := st.chat_input(placeholder="ask Optima"):
+    if prompt := st.chat_input(placeholder="ask Optima", disabled=st.session_state.disabled, on_change=disable):
         input_time = str(datetime.now())
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -122,7 +128,6 @@ if user_id:
         output_time = str(datetime.now())
         row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
-        st.chat_input(placeholder="ask Optima", disable=True)
 
 else:
     st.markdown("\n")
