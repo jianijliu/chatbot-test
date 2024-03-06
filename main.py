@@ -7,11 +7,6 @@ import gspread
 import pandas as pd
 from datetime import datetime
 import socket
-
-if "disabled" not in st.session_state:
-    st.session_state["disabled"] = False
-def disable():
-    st.session_state["disabled"] = True
     
 #### Demo: https://chatbot-test-jiani.streamlit.app/
 
