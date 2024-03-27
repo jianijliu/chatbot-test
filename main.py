@@ -121,7 +121,8 @@ if user_id:
         output_time = str(datetime.now())
         row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
-
+    with st.container():
+        st.write("How Optima Works")
 else:
     st.markdown("\n")
     # st.markdown("<h3 style='text-align: center;'> 感谢您参与本次实验! <br> 请先仔细阅读侧边栏中的任务须知，<br> 并输入自己的实验编号以开启实验! </h3>", unsafe_allow_html=True)
