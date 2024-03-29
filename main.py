@@ -122,7 +122,7 @@ if user_id:
         row = [user_id, input_time, prompt, output_time, full_response]
         sheet.insert_row(row)
     
-        st.info("**How Optima Works**: Optima's response is based on your input, and utilizes a Large Neural Network Model to generate the response above. Specifically, Optima learns from a large amount of text data to understand language patterns and context, and generates text responses based on this learning, rather than directly accessing specific sources.")
+        st.info("**How Optima Works**: Optima utilizes a Large Neural Network Model to generate the responses mentioned above. By processing users' input, Optima learns from extensive text data to understand language patterns and context. This learning enables Optima to dynamically generate text responses in an adaptable and interactive manner, without the need to access specific sources or rely on pre-written answers. To learn more click here.")
 else:
     st.markdown("\n")
     # st.markdown("<h3 style='text-align: center;'> 感谢您参与本次实验! <br> 请先仔细阅读侧边栏中的任务须知，<br> 并输入自己的实验编号以开启实验! </h3>", unsafe_allow_html=True)
