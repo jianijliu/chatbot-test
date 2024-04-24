@@ -128,3 +128,5 @@ else:
     # st.markdown("<h3 style='text-align: center;'> 感谢您参与本次实验! <br> 请先仔细阅读侧边栏中的任务须知，<br> 并输入自己的实验编号以开启实验! </h3>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center;'>Please read instructions in the sidebar carefully and \n type in your Prolific ID to initiate this service!</h2>", unsafe_allow_html=True)
     # st.markdown("Please read instructions in the sidebar carefully and type in your participant ID first!")
+    st.markdown("<h3 style='text-align: center;'>(You can search as much as you want using Optima.)</h3>", unsafe_allow_html=True)
+
